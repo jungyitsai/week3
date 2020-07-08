@@ -36,6 +36,11 @@ var app = new Vue({
     methods: {
         openModal(operate, item) {
             switch (operate) {
+                case "create":
+                    this.tempProduct = {};
+                    $('#addProductModal').modal('show');
+                    break;
+
                 // 先觸發 model 元件，把要刪除的資料搬進去 tempProduct，最後再由 modal 的確認按鈕呼叫 delProduct 執行
                 case "delete":
                     $('#delProductModal').modal('show');
@@ -43,6 +48,14 @@ var app = new Vue({
                     break;
 
             }
+        },
+        addProduct() {
+            console.log(this.tempProduct);
+            const id = new Date().getTime();
+            this.tempProduct.id = id;
+            this.product_list.push(this.tempProduct);
+            this.tempProduct = {};
+            $('#addProductModal').modal('hide');
         },
         delProduct() {
             if (this.tempProduct.id) {
