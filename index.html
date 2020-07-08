@@ -45,8 +45,7 @@
                             <!-- 合再一起的元件，通常都是 xxx-group ( ex: btn-group, list-group ) -->
                             <div class="btn-group">
                                 <button type="button" class="btn btn-outline-primary">編輯</button>
-                                <button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                    data-target="#delProductModal" @click="openModal('delete', item)">刪除</button>
+                                <button type="button" class="btn btn-outline-danger" @click="openModal('delete', item)">刪除</button>
                             </div>
                         </td>
                     </tr>
