@@ -3,6 +3,7 @@ var app = new Vue({
     data: {
         product_list: [
             {
+                id: 1586934917210,
                 title: "神戶一日遊",
                 category: "神戶",
                 content: "暢遊神戶五個景點",
@@ -16,6 +17,7 @@ var app = new Vue({
                 unit: "單位 - string",
             },
             {
+                id: 1196934917910,
                 title: "大阪一日遊",
                 category: "大阪",
                 content: "暢遊大阪五個景點",
@@ -29,8 +31,30 @@ var app = new Vue({
                 unit: "單位 - string",
             },
         ],
+        tempProduct: {},
     },
     methods: {
+        openModal(operate, item) {
+            switch (operate) {
+                // 先觸發 model 元件，把要刪除的資料搬進去 tempProduct，最後再由 modal 的確認按鈕呼叫 delProduct 執行
+                case "delete":
+                    $('#delProductModal').modal('show');
+                    this.tempProduct = Object.assign({}, item);
+                    break;
 
+            }
+        },
+        delProduct() {
+            if (this.tempProduct.id) {
+                const id = this.tempProduct.id;
+                this.product_list.forEach((item, index) => {
+                    if (item.id === id) {
+                        this.product_list.splice(index, 1);
+                        this.tempProduct = {};
+                    }
+                });
+            }
+            $('#delProductModal').modal('hide');
+        }
     }
 });
