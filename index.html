@@ -44,7 +44,7 @@
                     <td>
                         <!-- 合再一起的元件，通常都是 xxx-group ( ex: btn-group, list-group ) -->
                         <div class="btn-group">
-                            <button type="button" class="btn btn-outline-primary">編輯</button>
+                            <button type="button" class="btn btn-outline-primary" @click="openModal('update', item)">編輯</button>
                             <button type="button" class="btn btn-outline-danger"
                                 @click="openModal('delete', item)">刪除</button>
                         </div>
@@ -53,13 +53,13 @@
             </tbody>
         </table>
 
-        <!-- Create New Product Modal -->
-        <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel"
+        <!-- Product Modal -->
+        <div class="modal fade" id="ProductModal" tabindex="-1" role="dialog" aria-labelledby="ProductModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header bg-dark text-white">
-                        <h5 class="modal-title" id="addProductModalLabel">建立新產品</h5>
+                        <h5 class="modal-title" id="ProductModalLabel">建立新產品</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -133,7 +133,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" @click="addProduct">確認</button>
+                        <button type="button" class="btn btn-primary" @click="updateProduct">確認</button>
                     </div>
                 </div>
             </div>
